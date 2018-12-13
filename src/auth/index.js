@@ -7,9 +7,9 @@ export default {
     isLoggedIn(){
         return store.getters.AUTHENTICADED
     },
-    login(){
+    login(payload){
         store.dispatch("LOGIN", true);
-        store.commit("SET_USER", {name:'Alejandro', email:'ale@mail.com'});
+        store.commit("SET_USER", payload);
         store.commit("SET_TOKEN", '--KX1K4-IXJ$#J23!%K#');
         router.push('/')
     },

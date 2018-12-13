@@ -34,7 +34,7 @@ export default {
     },
     methods:{
         login() {
-            Auth.login();
+            Auth.login(this.user);
         }
     }
 }

@@ -6,11 +6,11 @@
                 <form @submit.prevent="login">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" v-model="payload.email">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="payload.password">
                     </div>
                     <button type="submit" class="btn btn-primary">Sign In</button>
                 </form>
@@ -26,15 +26,15 @@ export default {
     name:'login',
     data(){
         return {
-            user: {
-                name:'Alejandro',
-                email: 'ale@mail.com'
+            payload: {
+                email:'',
+                password: ''
             }
         }
     },
     methods:{
         login() {
-            Auth.login(this.user);
+            Auth.login(this.payload);
         }
     }
 }

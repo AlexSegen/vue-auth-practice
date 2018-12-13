@@ -24,6 +24,9 @@ export default {
   computed: {
     ...mapGetters(["AUTHENTICADED"])
   },
+  created(){
+    this.$store.dispatch("CHECK_AUTH");
+  }
 }
 </script>
 <style>

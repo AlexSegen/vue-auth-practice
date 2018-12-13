@@ -11,6 +11,9 @@ export default {
     login(payload){
         Auth.login(payload).then(res =>{
             if(res.data.auth)
+                
+                localStorage.setItem('SESSION', JSON.stringify(res.data));
+
                 store.dispatch("LOGIN", true);
                 store.commit("SET_USER", res.data.user);
                 store.commit("SET_TOKEN", res.data.token);

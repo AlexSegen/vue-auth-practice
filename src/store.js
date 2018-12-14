@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     user: {
       name: '' || 'Sin nombre',
-      email: '' || 'Sin correo'
+      email: ''
     },
     token: '',
     loggedIn: false
@@ -36,13 +36,15 @@ export default new Vuex.Store({
   },
   actions: {
     CHECK_AUTH:(context, payload) => {
-      let session = localStorage.getItem('SESSION');
+      
+      let session = localStorage.getItem('_SESSION');
 
-      if(JSON.parse(session).auth) {
+      if(session != null) {
         context.commit("SET_AUTH", true);
         context.commit("SET_USER", JSON.parse(session).user);
-        context.commit("SET_TOKEN", JSON.parse(session).token);
+        context.commit("SET_TOKEN", JSON.parse(session).token);        
       }
+
     },
     LOGIN:(context, payload) => {
       context.commit('SET_AUTH', payload);

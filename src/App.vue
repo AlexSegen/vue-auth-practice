@@ -1,13 +1,11 @@
 <template>
-    <div class="container">
-      <navbar v-if="AUTHENTICADED"/> 
-
-        <main>
-          <router-view/>
-        </main>
-     
-      <footer/>
-    </div>
+<div>
+    <navbar v-if="AUTHENTICADED"/> 
+      <main>
+        <router-view/>
+      </main>
+    <footer/>
+</div>      
 </template>
 
 

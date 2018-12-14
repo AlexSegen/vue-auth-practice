@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Auth from '@/auth'
 
-
 import Home from './views/Home.vue'
 import Login from './views/auth/login.vue'
 
@@ -15,7 +14,8 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      meta: { notWhileLoggedIn: true },
     },
     {
       path: '/',
@@ -37,10 +37,8 @@ const router = new Router({
 
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    if (!Auth.isLoggedIn()) {
+  if (to.matched.some(record => record.meta.requiresAuth)) {   
+    if (!Auth.checkSession()) {
       next({
         path: '/login',
         query: { redirect: to.fullPath }
@@ -48,8 +46,16 @@ router.beforeEach((to, from, next) => {
     } else {
       next()
     }
+  } else if (to.matched.some(record => record.meta.notWhileLoggedIn)){
+      if (Auth.checkSession()) {
+        next({
+          path: '/'
+        })
+      } else {
+        next()
+      }
   } else {
-    next() // make sure to always call next()!
+    next()
   }
 })
 

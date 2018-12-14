@@ -5,14 +5,19 @@ import router from '@/router'
 import Auth from '@/services/auth.service'
 
 export default {
+    checkSession(){
+        let session  = localStorage.getItem('_SESSION');
+
+        return (session != null) ? JSON.parse(session).auth : false
+    },
     isLoggedIn(){
         return store.getters.AUTHENTICADED
     },
     login(payload){
-        Auth.login(payload).then(res =>{
+        return Auth.login(payload).then(res =>{
             if(res.data.auth)
                 
-                localStorage.setItem('SESSION', JSON.stringify(res.data));
+                localStorage.setItem('_SESSION', JSON.stringify(res.data));
 
                 store.dispatch("LOGIN", true);
                 store.commit("SET_USER", res.data.user);
@@ -21,6 +26,8 @@ export default {
         })
     },
     logout(){
+        
+        localStorage.removeItem('_SESSION');
         store.dispatch("LOGIN", false);
         store.commit("SET_USER", {});
         store.commit("SET_TOKEN", '');

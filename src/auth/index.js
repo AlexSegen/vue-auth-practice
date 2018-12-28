@@ -26,12 +26,7 @@ export default {
         })
     },
     logout(){
-        
-        localStorage.removeItem('_SESSION');
-        store.dispatch("LOGIN", false);
-        store.commit("SET_USER", {});
-        store.commit("SET_TOKEN", '');
-        router.push('/login')
+        store.dispatch("LOGOUT");
     },
     getUser(){
         return store.getters.USER

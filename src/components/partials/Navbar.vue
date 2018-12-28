@@ -20,7 +20,6 @@
 </template>
 <script>
 import Auth from '@/auth'
-import { mapGetters } from "vuex";
 export default {
     name:'navbar',
     data(){

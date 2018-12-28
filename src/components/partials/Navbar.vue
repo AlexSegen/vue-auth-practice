@@ -39,7 +39,7 @@
         </a>
 
         <div class="navbar-dropdown">
-          <router-link :to="{ name: 'about'}" class="navbar-item">
+          <router-link :to="{ name: 'profile'}" class="navbar-item">
             Profile
           </router-link>
           <a class="navbar-item" disabled>

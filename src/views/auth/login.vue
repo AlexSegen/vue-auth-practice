@@ -1,22 +1,35 @@
 <template>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card card-form">
-                <div class="card-body">
-                <form @submit.prevent="login">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" v-model="payload.email" required :disabled="loading">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="payload.password" required :disabled="loading">
-                    </div>
-                    <button type="submit" class="btn btn-primary" v-text="loading ? 'Sending':'Sign In'" :disabled="loading">Sign In</button >
-                </form>
+<div class="login">
+    <div class="card card-form">
+        <div class="card-content">
+            <form @submit.prevent="login">
+                <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="email" placeholder="Enter email" v-model="payload.email" required :disabled="loading">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                    </span>
+                </p>
                 </div>
-            </div>
+                <div class="field">
+                <p class="control has-icons-left">
+                    <input class="input" type="password"  placeholder="Password" v-model="payload.password" required :disabled="loading">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                    </span>
+                </p>
+                </div>
+                <div class="field">
+                <p class="control">
+                    <button class="button is-success" type="submit" v-text="loading ? 'Sending':'Sign In'" :disabled="loading">
+                    Sign In
+                    </button>
+                </p>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -51,8 +64,8 @@ export default {
 </script>
 
 <style>
-.card-form {
-    max-width: 350px;
+.card.card-form {
+    max-width: 300px;
     margin: 0 auto;
 }
 </style>

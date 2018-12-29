@@ -44,7 +44,7 @@
           <a class="button is-white"  @click="logout()"  v-if="AUTHENTICADED">
             Logout
           </a>
-          <router-link class="button is-white" to="/register" v-if="!AUTHENTICADED">
+          <router-link class="button is-white" :to="{ name:'register' }" v-if="!AUTHENTICADED">
             Register
           </router-link>
           <router-link class="button is-white" :to="{ name:'login' }" v-if="!AUTHENTICADED">

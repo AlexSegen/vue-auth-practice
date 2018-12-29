@@ -4,6 +4,7 @@ import Auth from '@/auth'
 
 import Home from './views/Home.vue'
 import Login from './views/auth/login.vue'
+import Register from './views/auth/register.vue'
 
 Vue.use(Router)
 
@@ -15,6 +16,12 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: Login,
+      meta: { notWhileLoggedIn: true },
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register,
       meta: { notWhileLoggedIn: true },
     },
     {

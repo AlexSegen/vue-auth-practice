@@ -13,13 +13,10 @@
             
             <form @submit.prevent="register">
                 <div class="field">
-                <p class="control has-icons-left has-icons-right">
+                <p class="control has-icons-left">
                     <input class="input" type="text" placeholder="Your name" v-model="payload.name" required :disabled="loading">
                     <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
                     </span>
                 </p>
                 </div>
@@ -29,33 +26,40 @@
                     <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
                     </span>
-                    <span class="icon is-small is-right">
+                </p>
+                </div>
+                <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="password"  placeholder="Password" v-model="payload.password" required :disabled="loading">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                    </span>
+                    <span class="icon is-small is-right" :class="{'has-text-primary': matchPasswords}">
                     <i class="fas fa-check"></i>
                     </span>
                 </p>
                 </div>
                 <div class="field">
-                <p class="control has-icons-left">
-                    <input class="input" type="password"  placeholder="Password" v-model="payload.password" required :disabled="loading">
-                    <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
-                    </span>
-                </p>
-                </div>
-                <div class="field">
-                <p class="control has-icons-left">
+                <p class="control has-icons-left has-icons-right">
                     <input class="input" type="password"  placeholder="Confirm password" v-model="paswordConfirm" required :disabled="loading">
                     <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
+                    </span>
+                    <span class="icon is-small is-right" :class="{'has-text-primary': matchPasswords}">
+                    <i class="fas fa-check"></i>
                     </span>
                 </p>
                 </div>
                 <div class="field">
                 <p class="control">
                     <button class="button is-primary is-fullwidth" :class="{'is-loading': loading}" >
-                    Sign In
+                    Register
                     </button>
                 </p>
+                </div>
+                
+                <div class="form-footer">
+                    <p>Already have an account? <router-link :to="{ name:'login' }">Sign in!</router-link></p>
                 </div>
             </form>
         </div>
@@ -86,6 +90,11 @@ export default {
                 email:'',
                 password: ''
             }
+        }
+    },
+    computed:{
+        matchPasswords(){
+            return this.payload.password.toString().trim().length > 0 && this.paswordConfirm.toString().trim().length > 0 && this.payload.password == this. paswordConfirm
         }
     },
     methods:{

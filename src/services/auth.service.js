@@ -18,12 +18,12 @@ export default {
                         break;
                     
                     case 401:
-                        sysMsg.getMsg('error', 'Error: datos incorrectos.')
+                        sysMsg.getMsg('error', 'Datos incorrectos.')
                         console.log('Error: datos incorrectos.')
                         break;
 
                     default:
-                        sysMsg.getMsg('error','Error al intentar conectar con el servidor.')
+                        sysMsg.getMsg('error','No se pudo conectar con el servidor.')
                         console.log('Error al intentar conectar con el servidor.')
                         break;
                 }  
@@ -50,7 +50,7 @@ export default {
                         break;
 
                     default:
-                        sysMsg.getMsg('error','Error al intentar conectar con el servidor.')
+                        sysMsg.getMsg('error','No se pudo conectar con el servidor.')
                         console.log('Error al intentar conectar con el servidor.')
                         break;
                 }  

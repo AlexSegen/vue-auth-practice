@@ -13,13 +13,10 @@
             
             <form @submit.prevent="login">
                 <div class="field">
-                <p class="control has-icons-left has-icons-right">
+                <p class="control has-icons-left">
                     <input class="input" type="email" placeholder="Enter email" v-model="payload.email" required :disabled="loading">
                     <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
                     </span>
                 </p>
                 </div>
@@ -37,6 +34,9 @@
                     Sign In
                     </button>
                 </p>
+                </div>
+                <div class="form-footer">
+                    <p>Don't have an account? <router-link :to="{ name:'register' }">Join now</router-link></p>
                 </div>
             </form>
         </div>

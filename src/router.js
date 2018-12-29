@@ -6,6 +6,8 @@ import Home from './views/Home.vue'
 import Login from './views/auth/login.vue'
 import Register from './views/auth/register.vue'
 
+import Members from './views/members/index'
+
 Vue.use(Router)
 
 const router = new Router({
@@ -38,6 +40,12 @@ const router = new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/Profile.vue')
+    },
+    {
+      path: '/members',
+      name: 'members',
+      meta: { requiresAuth: true },
+      component: Members
     }
   ]
 })

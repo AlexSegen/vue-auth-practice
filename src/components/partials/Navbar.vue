@@ -14,11 +14,14 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <router-link :to="{ name: 'home'}" class="navbar-item" v-if="AUTHENTICADED">
+    <div class="navbar-start" v-if="AUTHENTICADED">
+      <router-link :to="{ name: 'home'}" class="navbar-item">
         Home
       </router-link>
-      <div class="navbar-item has-dropdown is-hoverable"  v-if="AUTHENTICADED">
+      <router-link :to="{ name: 'members'}" class="navbar-item">
+        Members
+      </router-link>
+      <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           {{user.name}}
         </a>

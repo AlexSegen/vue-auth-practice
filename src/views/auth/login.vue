@@ -1,7 +1,16 @@
 <template>
 <div class="login">
-    <div class="card card-form">
+
+<hero title="Welcome back!" subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, esse vero! Sequi deserunt."/>
+
+  <section class="section">
+    <div class="container">
+    <div class="login-card">
         <div class="card-content">
+            <div class="is-centered block has-text-centered flex">
+                <i class="fas fa-gem fa-2x"></i>
+            </div>
+            
             <form @submit.prevent="login">
                 <div class="field">
                 <p class="control has-icons-left has-icons-right">
@@ -24,7 +33,7 @@
                 </div>
                 <div class="field">
                 <p class="control">
-                    <button class="button is-success" type="submit" v-text="loading ? 'Sending':'Sign In'" :disabled="loading">
+                    <button class="button is-primary is-fullwidth" :class="{'is-loading': loading}" >
                     Sign In
                     </button>
                 </p>
@@ -32,13 +41,22 @@
             </form>
         </div>
     </div>
+
+    </div>
+  </section>
+
+
 </div>
 </template>
 
 <script>
 import Auth from '@/auth'
+import Hero from '@/components/partials/Hero'
 export default {
     name:'login',
+    components:{
+        Hero
+    },
     data(){
         return {
             loading: false,
@@ -64,7 +82,7 @@ export default {
 </script>
 
 <style>
-.card.card-form {
+.login-card {
     max-width: 300px;
     margin: 0 auto;
 }

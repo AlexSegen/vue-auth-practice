@@ -1,25 +1,10 @@
 <template>
     <header>
-
-<!--         <b-navbar type="dark" variant="primary" toggleable>
-            <b-navbar-toggle target="nav_dropdown_collapse"></b-navbar-toggle>
-            <b-collapse is-nav id="nav_dropdown_collapse">
-            <b-navbar-nav>
-                <b-nav-item :to="{ name: 'home'}">Home</b-nav-item>
-                <b-nav-item :to="{ name: 'about'}">About</b-nav-item>
-                <b-nav-item-dropdown :text="user.name" right>
-                <b-dropdown-item href="#">Account</b-dropdown-item>
-                <b-dropdown-item href="javascript:void(0);" @click="logout()">Logout</b-dropdown-item>
-                </b-nav-item-dropdown>
-            </b-navbar-nav>
-            </b-collapse>
-        </b-navbar> -->
-
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
+    <router-link class="navbar-item" :to="{ name: 'home' }">
       <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-    </a>
+    </router-link>
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -30,10 +15,10 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <router-link :to="{ name: 'home'}" class="navbar-item">
+      <router-link :to="{ name: 'home'}" class="navbar-item" v-if="AUTHENTICADED">
         Home
       </router-link>
-      <div class="navbar-item has-dropdown is-hoverable">
+      <div class="navbar-item has-dropdown is-hoverable"  v-if="AUTHENTICADED">
         <a class="navbar-link">
           {{user.name}}
         </a>
@@ -56,9 +41,15 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-light"  @click="logout()">
+          <a class="button is-white"  @click="logout()"  v-if="AUTHENTICADED">
             Logout
           </a>
+          <router-link class="button is-white" to="/register" v-if="!AUTHENTICADED">
+            Register
+          </router-link>
+          <router-link class="button is-white" :to="{ name:'login' }" v-if="!AUTHENTICADED">
+            Login
+          </router-link>
         </div>
       </div>
     </div>
@@ -69,6 +60,7 @@
 </template>
 <script>
 import Auth from '@/auth'
+import { mapGetters } from "vuex";
 export default {
     name:'navbar',
     data(){
@@ -77,6 +69,7 @@ export default {
         }
     },
     computed:{
+      ...mapGetters(["AUTHENTICADED"]),
         user(){
             return Auth.getUser();
         }

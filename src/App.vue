@@ -1,6 +1,6 @@
 <template>
 <div>
-    <navbar v-if="AUTHENTICADED"/> 
+    <navbar /> 
       <main>
         <router-view/>
       </main>
@@ -10,7 +10,6 @@
 
 
 <script>
-import { mapGetters } from "vuex";
 import Navbar from '@/components/partials/Navbar.vue'
 import Footer from '@/components/partials/Footer.vue'
 
@@ -19,16 +18,8 @@ export default {
   components: {
     Navbar, Footer
   },
-  computed: {
-    ...mapGetters(["AUTHENTICADED"])
-  },
   created(){
     this.$store.dispatch("CHECK_AUTH");
   }
 }
 </script>
-<style>
-main {
-  padding: 20px 0;
-}
-</style>

@@ -22,14 +22,20 @@ export default {
                         console.log('Error: datos incorrectos.')
                         break;
 
+                    case 444:
+                        sysMsg.getMsg('Server timeout')
+                        console.log('Error: Email already taken')
+                        break;
+
                     default:
                         sysMsg.getMsg('error','No se pudo conectar con el servidor.')
-                        console.log('Error al intentar conectar con el servidor.')
+                        console.log('Error al intentar conectar con el servidor. ' + error.response)
                         break;
                 }  
             } else {
                 console.log('error: ', error);
-            }            
+            }
+
         }
     },
     async register(payload){
@@ -49,12 +55,18 @@ export default {
                         console.log('Error: Email already taken')
                         break;
 
+                    case 444:
+                        sysMsg.getMsg('Server timeout')
+                        console.log('Error: Email already taken')
+                        break;
+
                     default:
                         sysMsg.getMsg('error','No se pudo conectar con el servidor.')
                         console.log('Error al intentar conectar con el servidor.')
                         break;
                 }  
             } else {
+                sysMsg.getMsg('Server timeout')
                 console.log('error: ', error);
             }            
         }

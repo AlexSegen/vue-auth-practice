@@ -4,7 +4,7 @@ import Auth from '@/services/auth.service'
 
 export default {
     register(payload){
-        return Auth.register(payload).then(res =>{
+        return Auth.register(payload).then(() =>{
             router.push('/')
         })
     },

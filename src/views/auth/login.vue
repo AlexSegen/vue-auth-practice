@@ -51,6 +51,7 @@
 
 <script>
 import Auth from '@/auth'
+import sysMsg from '@/helpers/sys.messages'
 import Hero from '@/components/partials/Hero'
 export default {
     name:'login',
@@ -72,7 +73,6 @@ export default {
             Auth.login(this.payload).then(()=>{
                 this.loading = false;
             }).catch(error => {
-                console.log('error', error);
                 this.loading = false;
                 this.payload.password = ''
             })

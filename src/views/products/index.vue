@@ -87,7 +87,7 @@
             <label class="label">Photos</label>
             <div class="gallery">
               <p v-if="item.photos.length == 0">No photos</p>
-              <figure  v-else class="image is-128x128" v-for="(photo, index) in item.photos" :key="index">
+              <figure  v-else class="image" v-for="(photo, index) in item.photos" :key="index">
                 <a class="delete is-small" @click="removePhoto(index)"></a>
                 <img :src="photo">
               </figure>
@@ -131,6 +131,7 @@
 <script>
 import firebase from 'firebase'
 import config from '@/firebase.config'
+import sysMsg from '@/helpers/sys.messages'
 import Hero from '@/components/partials/Hero'
 import productServices from '@/services/product.services'
 export default {
@@ -154,34 +155,43 @@ export default {
   },
   created(){
     this.getItems();
+    this.initializeFirebase();
   },
   methods:{
+    initializeFirebase(){
+      if (!firebase.apps.length) {
+        firebase.initializeApp(config)
+      } else {
+        console.log('Firebase error');
+      }
+    },
     handleFileUploadChange() {
       this.photoSelected = document.querySelector('.select-file').files[0];
     },
     handleFileUploadSubmit() {
-      this.uploading = true;
-      if (!firebase.apps.length) {
-          firebase.initializeApp(config)
-      }
-      let _this = this;
-      const storageService = firebase.storage();
-      const storageRef = storageService.ref();
-      const uploadTask = storageRef.child(`images/${this.photoSelected.name}`).put(this.photoSelected); //create a child directory called images, and place the file inside this directory
-      uploadTask.on('state_changed', (snapshot) => {
-      }, (error) => {
-        _this.uploading = false;
-        console.log(error);
-      }, () => {
-        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          _this.item.photos.push(downloadURL);
-          _this.uploading = false;
-          _this.photoSelected = ''
-          //console.log('success');
-          //console.log('File available at', downloadURL);
-        });
-      });
-    },
+ 
+           if (this.photoSelected.toString().trim().length > 0){
+            this.uploading = true;    
+            let _this = this;
+            const storageService = firebase.storage();
+            const storageRef = storageService.ref();
+            const uploadTask = storageRef.child(`images/${this.photoSelected.name}`).put(this.photoSelected); //create a child directory called images, and place the file inside this directory
+            uploadTask.on('state_changed', (snapshot) => {
+            }, (error) => {
+              _this.uploading = false;
+              console.log(error);
+            }, () => {
+              uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                _this.item.photos.push(downloadURL);
+                sysMsg.getMsg('success', 'Photo uploaded!')
+                _this.uploading = false;
+                _this.photoSelected = ''
+              });
+            });    
+          } else {
+            sysMsg.getMsg('error', 'Select a photo')
+          }
+     },
     getItems(){
       productServices.getAll().then(response => {
           this.products = response.data;
@@ -192,7 +202,7 @@ export default {
       let now = new Date();
       this.item.created_at = now;
       productServices.postItem(this.item).then(response => {
-          console.log(response.data);
+          sysMsg.getMsg('success', 'Item added!')
           this.products.push(response.data);
           this.loading = false;
           this.closeModal();
@@ -202,8 +212,7 @@ export default {
       this.loading = true
       productServices.updateItem(this.item).then(response => {
           this.loading = false
-          console.log(response.data);
-          console.log('item updated')
+          sysMsg.getMsg('info', 'Item updated!')
       })
     },
     deleteItem(item){
@@ -211,7 +220,7 @@ export default {
       productServices.deleteItem(item).then(() => {
         this.products.splice(this.products.findIndex(find => find.id == item.id), 1)
         this.loading = false
-          console.log('Eliminado');
+        sysMsg.getMsg('warning', 'Item removed!')
       })
     },
     removePhoto(index){
@@ -232,6 +241,7 @@ export default {
       this.item = {
         photos: []
       }
+      this.photoSelected = '';
     },
     showInfo(item){
       this.item = item;
@@ -258,6 +268,14 @@ export default {
   margin: 3px;
   display: inline-block;
   position: relative;
+}
+
+.gallery .image img{
+  max-width: 100%!important;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 .gallery{
   padding: 10px;

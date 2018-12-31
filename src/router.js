@@ -7,6 +7,7 @@ import Login from './views/auth/login.vue'
 import Register from './views/auth/register.vue'
 
 import Members from './views/members/index'
+import Products from './views/products/index'
 
 Vue.use(Router)
 
@@ -46,6 +47,12 @@ const router = new Router({
       name: 'members',
       meta: { requiresAuth: true },
       component: Members
+    },
+    {
+      path: '/products',
+      name: 'products',
+      meta: { requiresAuth: true },
+      component: Products
     }
   ]
 })

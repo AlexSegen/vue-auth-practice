@@ -12,7 +12,6 @@
   </div>
 </template>
 <script>
-import Auth from '@/auth'
 import Hero from '@/components/partials/Hero'
 export default {
   name:'about',

@@ -21,6 +21,9 @@
       <router-link :to="{ name: 'members'}" class="navbar-item">
         Members
       </router-link>
+      <router-link :to="{ name: 'products'}" class="navbar-item">
+        Products
+      </router-link>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           {{user.name}}

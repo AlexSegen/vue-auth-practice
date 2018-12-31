@@ -11,7 +11,7 @@
       <div class="card-row">
         <div class="card card-member" v-for="(item, index) in products" :key="index">
             <div class="card-image">
-                <figure class="image is-128x128">
+                <figure class="image">
                 <img :src="item.photos.length > 0 ? item.photos[0]: null" alt="Placeholder image">
                 </figure>
             </div>
@@ -87,7 +87,7 @@
             <label class="label">Photos</label>
             <div class="gallery">
               <p v-if="item.photos.length == 0">No photos</p>
-              <figure  v-else class="image" v-for="(photo, index) in item.photos" :key="index">
+              <figure  v-else class="image is-128x128" v-for="(photo, index) in item.photos" :key="index">
                 <a class="delete is-small" @click="removePhoto(index)"></a>
                 <img :src="photo">
               </figure>
@@ -260,7 +260,7 @@ export default {
 }
 .card.card-member {
     max-width: 250px!important;
-    min-height: 395px;
+    min-height: 455px;
     margin: 5px;
     float:left;
 }

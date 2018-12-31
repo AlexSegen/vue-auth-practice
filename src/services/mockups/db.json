@@ -9,11 +9,6 @@
       "active": true,
       "created_at": "2018-08-18 20:16:55",
       "photos": [
-        "http://dummyimage.com/500x500.jpg/673AB7/ffffff",
-        "http://dummyimage.com/500x500.jpg/009688/ffffff",
-        "http://dummyimage.com/500x500.jpg/ff4444/ffffff",
-        "http://dummyimage.com/500x500.jpg/FF9800/ffffff",
-        "http://dummyimage.com/500x500.jpg/3F51B5/ffffff",
         "https://firebasestorage.googleapis.com/v0/b/myfirebasevue.appspot.com/o/images%2Fufo_1.png?alt=media&token=a80c8948-6379-4414-a489-1a009cb59932"
       ]
     },

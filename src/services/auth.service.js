@@ -1,9 +1,9 @@
 import $http from '@/services/api.config'
 import sysMsg from '@/helpers/sys.messages'
 
-let RESOURCE_NAME_LOGIN = '/auth/login'
+let RESOURCE_NAME_LOGIN = 'https://mynotesapp2018.herokuapp.com/api/auth/login'
 
-let RESOURCE_NAME_REGISTER = '/auth/register'
+let RESOURCE_NAME_REGISTER = 'https://mynotesapp2018.herokuapp.com/api/auth/register'
 export default {
     async login(payload){
         try {

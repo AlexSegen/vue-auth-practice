@@ -13,7 +13,7 @@
         <div class="card card-member" v-for="(item, index) in products" :key="index">
             <div class="card-image">
                 <figure class="image is-4by3">
-                <img :src="item.photos[0]" alt="Placeholder image">
+                <img :src="item.photos.length > 0 ? item.photos[0]: null" alt="Placeholder image">
                 </figure>
             </div>
             <div class="card-content">
@@ -112,7 +112,7 @@
 </template>
 <script>
 import Hero from '@/components/partials/Hero'
-import products from '@/services/mockups/products'
+import productServices from '@/services/product.services'
 export default {
   name:'about',
   components:{
@@ -121,16 +121,22 @@ export default {
   data(){
     return {
       modal: false,
-      products: products,
+      products: [],
       selected: {
         photos: []
       }
     }
   },
   created(){
-    console.log(this.products)
+    this.getItems();
   },
   methods:{
+    getItems(){
+      productServices.getAll().then(response => {
+          this.products = response.data;
+          console.log(this.products)
+      })
+    },
     closeModal(){
       this.modal = false;
 /*       this.selected = {

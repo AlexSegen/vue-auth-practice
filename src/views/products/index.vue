@@ -120,7 +120,7 @@
         </section>
         <footer class="modal-card-foot">
           <button type="submit" class="button is-success" :class="{ 'is-loading': loading }">Save changes</button>
-          <button class="button" type="button"  @click="closeModal">Cancel</button>
+          <button class="button" type="button"  @click="closeModal">Close</button>
         </footer>
       </form>
     </div>
@@ -173,9 +173,7 @@ export default {
            if (this.photoSelected.toString().trim().length > 0){
             this.uploading = true;    
             let _this = this;
-            const storageService = firebase.storage();
-            const storageRef = storageService.ref();
-            const uploadTask = storageRef.child(`images/${this.photoSelected.name}`).put(this.photoSelected); //create a child directory called images, and place the file inside this directory
+            const uploadTask = firebase.storage().ref().child(`images/${this.photoSelected.name}`).put(this.photoSelected); //create a child directory called images, and place the file inside this directory
             uploadTask.on('state_changed', (snapshot) => {
             }, (error) => {
               _this.uploading = false;

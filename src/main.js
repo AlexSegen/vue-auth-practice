@@ -3,11 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import firebase from 'firebase'
+import config from './firebase.config'
 
-import IcFirebaseUploader from 'ic-firebase-uploader';
-import 'ic-firebase-uploader/dist/ic-firebase-uploader.min.css';
-
-Vue.component('ic-firebase-uploader', IcFirebaseUploader);
+firebase.initializeApp(config)
 
 //Vendors
 import 'vanilla-antd-message/dist/style.css'

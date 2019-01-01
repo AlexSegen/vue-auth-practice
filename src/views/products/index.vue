@@ -155,21 +155,12 @@ export default {
   },
   created(){
     this.getItems();
-    this.initializeFirebase();
   },
   methods:{
-    initializeFirebase(){
-      if (!firebase.apps.length) {
-        firebase.initializeApp(config)
-      } else {
-        console.log('Firebase error');
-      }
-    },
     handleFileUploadChange() {
       this.photoSelected = document.querySelector('.select-file').files[0];
     },
     handleFileUploadSubmit() {
- 
            if (this.photoSelected.toString().trim().length > 0){
             this.uploading = true;    
             let _this = this;

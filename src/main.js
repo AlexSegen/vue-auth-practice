@@ -11,7 +11,6 @@ firebase.initializeApp(config)
 //Vendors
 import 'vanilla-antd-message/dist/style.css'
 import 'bulma/css/bulma.css'
-import 'bulma-pageloader/dist/css/bulma-pageloader.min.css'
 
 Vue.config.productionTip = false
 

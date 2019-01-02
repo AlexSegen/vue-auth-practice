@@ -12,7 +12,7 @@
         <div class="card card-member" v-for="(item, index) in products" :key="index">
             <div class="card-image">
                 <figure class="image">
-                <img :src="item.photos.length > 0 ? item.photos[0]: null" alt="Placeholder image">
+                <img :src="item.photos.length > 0 ? item.photos[ item.picture && item.picture != null ? item.picture: 0 ]: null" alt="Placeholder image">
                 </figure>
             </div>
             <div class="card-content">
@@ -87,9 +87,11 @@
             <label class="label">Photos</label>
             <div class="gallery">
               <p v-if="item.photos.length == 0">No photos</p>
-              <figure  v-else class="image is-128x128" v-for="(photo, index) in item.photos" :key="index">
-                <a class="delete is-small" @click="removePhoto(index)"></a>
-                <img :src="photo">
+              <figure v-else class="image is-128x128" @click="selectCover(index)" v-for="(photo, index) in item.photos" :key="index">
+                <a class="delete is-small"></a>
+                <a href="javascript:void(0);" @click="item.picture = index">
+                  <img :src="photo" class="select-cover" :class="{ 'selected': item.picture == index  }">
+                </a>
               </figure>
               
             </div>
@@ -179,6 +181,9 @@ export default {
           } else {
             sysMsg.getMsg('error', 'Select a photo')
           }
+     },
+     selectCover(index){
+
      },
     getItems(){
       productServices.getAll().then(response => {
@@ -274,5 +279,11 @@ export default {
   right: 4px;
   top: 4px;
   z-index: 1;
+}
+.select-cover{
+  border: 2px solid transparent;
+}
+.select-cover.selected{
+  border: 2px solid greenyellow;
 }
 </style>

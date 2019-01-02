@@ -130,7 +130,6 @@
 </template>
 <script>
 import firebase from 'firebase'
-import config from '@/firebase.config'
 import sysMsg from '@/helpers/sys.messages'
 import Hero from '@/components/partials/Hero'
 import productServices from '@/services/product.services'

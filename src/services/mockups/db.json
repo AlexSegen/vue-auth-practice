@@ -2,14 +2,16 @@
   "products": [
     {
       "id": 1,
-      "name": "Vinegar - White",
+      "name": "Collar",
       "description": "Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
       "price": "3500",
       "picture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAANDSURBVDjLXZNLaFxlAIW/+5hn5pkXMWFSU0uN9mFaUlNIUqmkjVIFFRVEUczChVKyduNOETeC+FipEcXajS0VrcQWW2zEllSSUkNK0pjUJNPJZGYyd5I79/H/93dTS/EsD4ePs/k0pRT3ZnRiZBA4DhwAWgATqAKXVaA+/Wjwy5/v3Wv/AUYnRkxgDHj+6dxQJBtrwbIbsD0Q0kFQ4Hz+rJBC/iKEfPHzJ7/bvAsYnRgJAb/2Nu/qP5o7jOVEcPGYtzTCKkLJDlDCI4ZN3v2NydXJa8IXh7594XRVv/NkbH/Tzv6B9l7K0sPXNYTQqYswNmHKboQ1J8ZyNURn4lF62x7c67n+CQCjcuTWAPDByzufMq7LLfLUqQeCTSdB2Q1hOTC3UqO6tUUkW0JLz3GwuZvzM1e2f315bNroG9n34XB7327NiJHXBahW7pMJrhYM6o7OzMomQbRCZNsN3NQcxaCCWZHsbsrpVxdnG03gQC7VwZS9SjGq87DxAAGCpTUPx6mTblNYjePMBxvgKjIiwlzRZej+/fiu2GMCTXGzgSV7lTXXJhnfzoaXpFIJSLc4tGZtirIHy50momrU1kuUN+IkYkl8T2RMpZSmKfBcC0UOMyQ5+4ePFkuQnxfoKkV7S51kbRBrxcdhEt/7G5RCCKGZUgRly7M6mowMyegjLBdNHD9EOBoh2hrj5kIJ50qGwcJpjuZ/ILb+D1upGKUNiRRB1RS++HOxfKtjRzzHudsTZOI7CBs5fMdGGRnCiSwHF09xLDTJQ6+9RaRrF/Vr4/x16RxDVtHSfU98/P3sRbEt0YJpr1At/U4262IKl5CmiOgG3de/ofvwc0RvXkD76iXiC6fo6mxkoLCe0b84dnLcc/2fxmcu8lhHD2mjgWwiIB2WpMIOyZBLdrNAtK0Ljp+B98vw9gLm1ixxXzWbAL7rv3JhbuqSW/f2Du87xI01E6OqEFoNP9CxU43YUz/ScOZN3PptbKBmGUiD1bsyPfHJ40nhi5PCl0de7X/dRLahVBxN18hNnyA1fZHORh9TX6ZWFCwWDOk76h3t/zr3v9v3rBTyDSmDPYEMsnfq6jMl2+5ZWkzHPdUkDbWi4LPhcfHevzBSqkykNJyOAAAAAElFTkSuQmCC",
       "active": true,
       "created_at": "2018-08-18 20:16:55",
       "photos": [
-        "https://firebasestorage.googleapis.com/v0/b/myfirebasevue.appspot.com/o/images%2F24197_160db641a1aab49d35ffebaa53b6f5af.jpg?alt=media&token=dd25195e-99bf-4bd3-8bca-8d009da28832"
+        "https://firebasestorage.googleapis.com/v0/b/myfirebasevue.appspot.com/o/images%2F24197_160db641a1aab49d35ffebaa53b6f5af.jpg?alt=media&token=dd25195e-99bf-4bd3-8bca-8d009da28832",
+        "https://firebasestorage.googleapis.com/v0/b/myfirebasevue.appspot.com/o/images%2Flogan-avatar2.jpg?alt=media&token=f6633a6c-442c-4cdd-8b8a-bedb09401112",
+        "https://firebasestorage.googleapis.com/v0/b/myfirebasevue.appspot.com/o/images%2F27631.jpg?alt=media&token=0102ccca-7b4f-4b53-9bd6-d0d126622f27"
       ]
     },
     {

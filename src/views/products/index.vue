@@ -101,7 +101,7 @@
             <label class="label">Add photo</label>
               <div class="file has-name">
                 <label class="file-label">
-                  <input class="file-input select-file" type="file" @change="handleFileUploadChange(this)"  accept="image/*"/>
+                  <input class="file-input select-file" type="file" @change="handleFileUploadChange"  accept="image/*"/>
                   <span class="file-cta">
                     <span class="file-icon">
                       <i class="fas fa-plus"></i>
@@ -158,8 +158,9 @@ export default {
     this.getItems();
   },
   methods:{
-    handleFileUploadChange() {
-      this.photoSelected = document.querySelector('.select-file').files[0];
+    handleFileUploadChange(event) {
+      //this.photoSelected = document.querySelector('.select-file').files[0];
+      this.photoSelected = event.target.files[0]
     },
     handleFileUploadSubmit() {
            if (this.photoSelected.toString().trim().length > 0){
